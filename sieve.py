@@ -1,30 +1,32 @@
 # A Sieve of Eratosthenes
+# https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 
-limit = 15485864 # CS data structures start at zero...(numbers are 0 -> limit-1)
-print (limit)
+max_prime = 13
+prime_or_not = list(()) 
 
-data = list(()) 
+integer_counter = 1
+while integer_counter <= max_prime:
+    prime_or_not.append('unknown')
+    integer_counter += 1
+prime_or_not[0]=0
+prime_or_not[1]=0
+prime_or_not[2]=0
 
-i = 1
-while i <= limit:
-    data.append('u')
-    i += 1
+integer_counter = 1
+while integer_counter <= max_prime / 2: #we may have an issue here. odd max_prime goes long.
 
-x = 1
-while x <= limit / 2:
+    # the next integer is prime, because all multiples of the previous integer have been marked not prime.
+    integer_counter = prime_or_not.index('unknown', integer_counter+1)
+    prime_or_not[integer_counter]=1 #does 1 mean prime. 
 
-    # the next unknown x is prime. This is the nature of the sieve.
-    x = data.index('u', x+1)
-    data[x]=1
-
-    # all multiples of x are not prime, obviously
-    y = x + x
-    while y < limit:
-        data[y] = 0
-        y += x
+    # all multiples of integer_counter are not prime, obviously
+    y = integer_counter + integer_counter
+    while y < max_prime:
+        prime_or_not[y] = 0
+        y += integer_counter
 
 count = 0
-for num in data:
+for num in prime_or_not:
     if num != 0:
         print(count)
     count += 1
