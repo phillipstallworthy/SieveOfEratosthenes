@@ -1,7 +1,6 @@
 # A Sieve of Eratosthenes
 
-limit = 42 # CS data structures start at zero...(numbers are 0 -> limit-1)
-print (limit)
+limit = 42 
 
 data = list(()) 
 
@@ -26,5 +25,5 @@ while x <= limit / 2:
 count = 0
 for num in data:
     if num != 0:
-        print(count)
+        print(count,'',)
     count += 1
