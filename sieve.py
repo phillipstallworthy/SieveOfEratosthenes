@@ -1,7 +1,7 @@
 # A Sieve of Eratosthenes
 # https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 
-max_prime = 13
+max_prime = 42
 prime_or_not = list(()) 
 
 integer_counter = 1
