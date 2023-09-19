@@ -1,14 +1,6 @@
 # A Sieve of Eratosthenes
 # https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 
-#import argparse
-#parser = argparse.ArgumentParser(description='Generate a list of primes')
-#parser.add_argument('limit', type=int, help='Test every integer for primeness upto this limit')
-#args = parser.parse_args()
-#if args.limit > 1024: parser.error("limit cannot be larger than 1024")
-
-#max_prime = args.limit
-
 
 
 def sieve(max_prime):
@@ -23,7 +15,7 @@ def sieve(max_prime):
     prime_or_not[1]=0
 
     integer_counter = 1
-    while integer_counter <= max_prime / 2: #we may have an issue here. odd max_prime goes long.
+    while integer_counter <= max_prime / 2: 
 
         # the next integer is prime, because all multiples of the previous integer have been marked not prime.
         integer_counter = prime_or_not.index('unknown', integer_counter+1)
@@ -37,6 +29,7 @@ def sieve(max_prime):
 
     count = 0
     returnme = ""
+    
     for num in prime_or_not:
         if num != 0:
             #print(count,'', end='')
@@ -47,4 +40,4 @@ def sieve(max_prime):
     return returnme
 
 
-#print (sieve(max_prime))
+
