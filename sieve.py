@@ -12,11 +12,8 @@ def sieve(max_prime):
 
     integer_counter = 0
     while integer_counter <= max_prime :
-        prime_or_not.append('unknown')
+        prime_or_not.append(prime) 
         integer_counter += 1
-
-    print("max_prime ", max_prime)
-    print(prime_or_not)
 
     prime_or_not[0]=not_prime
     prime_or_not[1]=not_prime
@@ -24,9 +21,8 @@ def sieve(max_prime):
     integer_counter = 1
     while integer_counter <= math.ceil(max_prime / 2): 
 
-        # the next unknown integer is prime, because all multiples of the current prime have been marked not prime.
-        integer_counter = prime_or_not.index('unknown', integer_counter+1)
-        prime_or_not[integer_counter]=prime
+        # the next "prime" is definitly prime, because all multiples of the current prime have been marked not prime.
+        integer_counter = prime_or_not.index(1, integer_counter + 1)
 
         # all multiples the current prime, are not prime.
         y = integer_counter + integer_counter
