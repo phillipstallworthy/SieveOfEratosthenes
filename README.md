@@ -1,0 +1,3 @@
+# SieveOfEratosthenes
+
+pytest test.py
