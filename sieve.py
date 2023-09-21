@@ -1,43 +1,45 @@
 # A Sieve of Eratosthenes
 # https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 
+import math
 
 
 def sieve(max_prime):
 
-    prime_or_not = list(()) 
+    prime_or_not = list(())
+    not_prime = 0
+    prime = 1
 
-    integer_counter = 1
-    while integer_counter <= max_prime:
+    integer_counter = 0
+    while integer_counter <= max_prime :
         prime_or_not.append('unknown')
         integer_counter += 1
-    prime_or_not[0]=0
-    prime_or_not[1]=0
+
+    print("max_prime ", max_prime)
+    print(prime_or_not)
+
+    prime_or_not[0]=not_prime
+    prime_or_not[1]=not_prime
 
     integer_counter = 1
-    while integer_counter <= max_prime / 2: 
+    while integer_counter <= math.ceil(max_prime / 2): 
 
-        # the next integer is prime, because all multiples of the previous integer have been marked not prime.
+        # the next unknown integer is prime, because all multiples of the current prime have been marked not prime.
         integer_counter = prime_or_not.index('unknown', integer_counter+1)
-        prime_or_not[integer_counter]=1 #does 1 mean prime. 
+        prime_or_not[integer_counter]=prime
 
-        # all multiples of integer_counter are not prime, obviously
+        # all multiples the current prime, are not prime.
         y = integer_counter + integer_counter
-        while y < max_prime:
-            prime_or_not[y] = 0
+        while y <= max_prime:
+            prime_or_not[y] = not_prime
             y += integer_counter
 
-    count = 0
-    returnme = ""
-    
-    for num in prime_or_not:
-        if num != 0:
-            #print(count,'', end='')
-            returnme += (str(count))
-            returnme += (" ")
-        count += 1
-    
-    return returnme
+    return_me = ""
+    for index, prime in enumerate(prime_or_not):
+        if prime != 0:
+            return_me += (str(index))
+            return_me += (" ")
+    return return_me
 
 
 
